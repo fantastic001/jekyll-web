@@ -1,0 +1,24 @@
+
+
+{% extends "jekyll_web/base.html"%}
+
+
+{% block content %}
+
+<div class="row">
+
+	<table>
+		<tr>
+			<th>Title</th>ht>
+		</tr>
+		{% for article in articles %}
+			<tr>
+				<td>{{ article.get_title() }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+</div>
+
+
+{% endblock %}

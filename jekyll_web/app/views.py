@@ -1,7 +1,6 @@
 
 from django.http import Http404
 from django.shortcuts import render
-from django.core.urlresolvers import reverse
 from .models import *
 
 from django.http import HttpResponseRedirect
@@ -15,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from jekyll_web import settings
 
 def index(request):
-    return render(request, "jekyll-web/index.html")
+    return render(request, "jekyll_web/index.html")
 
 def user_login(request):
     if request.method == "POST":
@@ -32,7 +31,7 @@ def user_login(request):
             return HttpResponseRedirect(reverse('login'))
     else:
         form = LoginForm()
-        return render(request, "jekyll-web/login.html", {"form": form})
+        return render(request, "jekyll_web/login.html", {"form": form})
 
 def user_logout(request):
     logout(request)
@@ -42,5 +41,5 @@ def user_logout(request):
 def article_list(request):
     site = JekyllSite(settings.JEKYLL_PATH)
     result = site.get_post_container().get_posts()
-    return render(request, "jekyll-web/article_list.html", {"articles": result})
+    return render(request, "jekyll_web/article_list.html", {"articles": result})
 

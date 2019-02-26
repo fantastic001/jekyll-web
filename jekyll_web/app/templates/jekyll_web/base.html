@@ -6,25 +6,21 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'jekyll-web/css/jekyll-web.css' %}">
+        <link rel="stylesheet" href="{% static 'jekyll_web/css/jekyll_web.css' %}">
     </head>
     <body>
 	<!-- NAVIGATION -->
 	<nav class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
-			<li><a href="{% url "lecturer-list" %}">Lektori</a></li>
-			<li><a href="{% url "article-list" %}">Lista aktivnih članaka</a></li>
-			<li><a href="{% url "article-archive" %}">Arhiva</a></li>
-			<li><a href="{% url "source-list"%}">Dodaj sa wiki-a</a></li>
 			{% if not user or not user.is_authenticated %}
-				<li><a href="{% url "login"%}">Uloguj se</a></li>
+				<li><a href="{% url "login"%}">Login</a></li>
 			{% else %}
-				<li><a href="{% url "logout" %}">Odjavi se</a></li>
+				<li><a href="{% url "logout" %}">Log out</a></li>
 			{% endif %}
 		</ul>
 	</nav>
         <div class="page-header">
-            <h1><a href="/">Lektorganizator</a></h1>
+            <h1><a href="/">Jekyll Web</a></h1>
         </div>
 	
         <div class="content container">
