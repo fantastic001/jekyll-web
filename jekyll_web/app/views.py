@@ -43,3 +43,8 @@ def article_list(request):
     result = site.get_post_container().get_posts()
     return render(request, "jekyll_web/article_list.html", {"articles": result})
 
+@login_required
+def article_read(request, article_slug):
+    site = JekyllSite(settings.JEKYLL_PATH)
+    result = site.get_post_container().get_post(article_slug)
+    return render(request, "jekyll_web/article_view.html", {"article": result})

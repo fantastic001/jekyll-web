@@ -1,0 +1,13 @@
+
+{% extends "jekyll_web/base.html"%}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="article-title">{{article.get_title}}</div>
+    <div class="article-content">{{article.get_contents}}</div>
+</div>
+
+
+{% endblock %}
