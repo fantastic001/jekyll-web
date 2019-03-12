@@ -47,4 +47,10 @@ def article_list(request):
 def article_read(request, article_slug):
     site = JekyllSite(settings.JEKYLL_PATH)
     result = site.get_post_container().get_post(article_slug)
-    return render(request, "jekyll_web/article_view.html", {"article": result})
+    from markdown import Markdown 
+    md = Markdown()
+    html_contents = md.convert(result.get_contents())
+    return render(request, "jekyll_web/article_view.html", {
+        "article": result,
+        "html_contents": html_contents
+    })

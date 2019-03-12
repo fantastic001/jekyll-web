@@ -5,8 +5,12 @@
 {% block content %}
 
 <div class="row">
-    <div class="article-title">{{article.get_title}}</div>
-    <div class="article-content">{{article.get_contents}}</div>
+    <div class="article-title">
+        <h1>
+            {{article.get_title}}
+        </h1>
+    </div>
+    <div class="article-content">{{html_contents | safe }}</div>
 </div>
 
 
