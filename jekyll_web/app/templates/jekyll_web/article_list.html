@@ -13,7 +13,11 @@
 		</tr>
 		{% for article in articles %}
 			<tr>
-				<td>{{ article.get_title }}</td>
+				<td>
+					<a href='{% url "article-read" article.get_filename %}''>
+						{{ article.get_title }}
+					</a>
+				</td>
 			</tr>
 		{% endfor %}
 	</table>
