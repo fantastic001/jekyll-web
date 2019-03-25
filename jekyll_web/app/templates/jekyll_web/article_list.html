@@ -23,6 +23,9 @@
 					<a href='{% url "article-form" article.get_filename %}''>
 						Edit
 					</a>
+					<a href='{% url "article-delete" article.get_filename %}''>
+						Remove
+					</a>
 				</td>
 			</tr>
 		{% endfor %}

@@ -80,3 +80,9 @@ def article_submit(request, article_slug):
         result.set_contents(request.POST["contents"])
         result.save()
     return redirect("article-list")
+
+@login_required
+def article_delete(request, article_slug):
+    site = JekyllSite(settings.JEKYLL_PATH)
+    site.get_post_container().delete_post(article_slug)
+    return redirect("article-list")
