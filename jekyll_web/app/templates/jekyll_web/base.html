@@ -12,6 +12,7 @@
 	<!-- NAVIGATION -->
 	<nav class="navbar navbar-inverse" role="navigation">
 		<ul class="nav navbar-nav">
+            <li><a href="{% url 'article-form' 'new' %}">Create article</a></li>
 			{% if not user or not user.is_authenticated %}
 				<li><a href="{% url "login"%}">Login</a></li>
 			{% else %}
