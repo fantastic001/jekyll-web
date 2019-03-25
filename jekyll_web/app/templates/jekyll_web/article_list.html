@@ -9,13 +9,19 @@
 
 	<table>
 		<tr>
-			<th>Title</th>ht>
+			<th>Title</th>
+			<th>Options</th>
 		</tr>
 		{% for article in articles %}
 			<tr>
 				<td>
 					<a href='{% url "article-read" article.get_filename %}''>
 						{{ article.get_title }}
+					</a>
+				</td>
+				<td>
+					<a href='{% url "article-form" article.get_filename %}''>
+						Edit
 					</a>
 				</td>
 			</tr>

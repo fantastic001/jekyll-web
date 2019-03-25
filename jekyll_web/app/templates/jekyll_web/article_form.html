@@ -6,9 +6,11 @@
 
 <div class="row">
     <div class="article-form">
-        <h1>
-            {{ form }}
-        </h1>
+            <form action='{% url "article-submit" article_slug %}' method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit"  value="Submit" />
+            </form>
     </div>
 </div>
 

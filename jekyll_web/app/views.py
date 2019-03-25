@@ -1,6 +1,6 @@
 
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 from django.http import HttpResponseRedirect
@@ -63,5 +63,20 @@ def article_edit(request, article_slug):
         form = ArticleForm(dict(title = result.get_title(), contents = result.get_contents()))
     return render(request, "jekyll_web/article_form.html", {
         "form": form,
-        "slug": article_slug
+        "article_slug": article_slug
     })
+
+@login_required
+def article_submit(request, article_slug):
+    site = JekyllSite(settings.JEKYLL_PATH)
+    if article_slug != "new":
+        result = site.get_post_container().get_post(article_slug)
+        result.set_title(request.POST["title"])
+        result.set_contents(request.POST["contents"])
+        result.save()
+    else:
+        result = site.get_post_container().get_post(request.POST["title"].replace(" ", "-").lower() + ".md")
+        result.set_title(request.POST["title"])
+        result.set_contents(request.POST["contents"])
+        result.save()
+    return redirect("article-list")
